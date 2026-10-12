@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tripzo | Himalayan treks and journeys across India and Nepal</title>
+<meta name="description" content="Tripzo plans treks, road journeys and summit climbs across the whole Himalaya, from Kashmir to Arunachal Pradesh and through Nepal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F2630;
+    --ink-2:#1B3B47;
+    --snow:#EEF3F5;
+    --glacier:#1F7482;
+    --line:#C5D5DB;
+    --marigold:#F2B632;
+    --flag-blue:#2B5FA8;
+    --flag-red:#C8372D;
+    --flag-green:#2F8F5B;
+    --text:#16313B;
+    --muted:#4F6A74;
+    --pad:clamp(20px,5vw,64px);
+    --sans:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--snow);color:var(--text);font-family:var(--serif);font-size:1.125rem;line-height:1.65}
+  h1,h2,h3,button,input,select,textarea,label,nav,.sans{font-family:var(--sans)}
+  a{color:var(--glacier)}
+  :focus-visible{outline:3px solid var(--marigold);outline-offset:3px}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden;color:#fff;
+    background:
+      radial-gradient(55% 55% at 70% 64%,rgba(242,182,50,.34),transparent 70%),
+      linear-gradient(180deg,#0B1E26 0%,#1B3B47 52%,#2F5F6C 100%)}
+  .site-head{display:flex;align-items:center;justify-content:space-between;padding:20px var(--pad)}
+  .logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:800 1.7rem/1 var(--sans);letter-spacing:-.03em}
+  .site-head nav{display:flex;align-items:center;gap:28px}
+  .site-head nav a:not(.btn){color:#DCE9ED;text-decoration:none;font-weight:500;font-size:1rem}
+  .site-head nav a:not(.btn):hover{color:#fff;text-decoration:underline}
+  .btn{display:inline-block;background:var(--marigold);color:var(--ink);font:700 1rem/1 var(--sans);padding:15px 22px;border-radius:6px;text-decoration:none;border:2px solid var(--marigold);cursor:pointer}
+  .btn:hover{background:#FFC94D;border-color:#FFC94D}
+  .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.65)}
+  .btn.ghost:hover{background:rgba(255,255,255,.12)}
+  .btn.small{padding:11px 16px;font-size:.95rem}
+  .hero-copy{padding:clamp(28px,6vw,72px) var(--pad) 0;max-width:1040px}
+  h1{font-size:clamp(2.7rem,7.2vw,5.6rem);line-height:.98;letter-spacing:-.035em;font-weight:800;margin:0 0 22px}
+  .hero-copy p{max-width:54ch;color:#D5E4E9;font-size:1.2rem;margin:0 0 28px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+  .ridge-wrap{margin-top:16px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+  .ridge-wrap::-webkit-scrollbar{display:none}
+  .ridge-wrap svg{display:block;width:100%;min-width:900px;height:auto}
+  .mk{cursor:pointer;outline:none}
+  .mk text{fill:#fff;font-family:var(--sans);pointer-events:none;paint-order:stroke;stroke:#0F2630;stroke-width:4px;stroke-linejoin:round}
+  .mk .mk-name{font-size:17px;font-weight:700}
+  .mk .mk-elev{font-size:14px;opacity:.78}
+  .mk .flag{fill:#fff;opacity:.9}
+  .mk .flag-big{display:none;fill:var(--marigold)}
+  .mk:hover .flag{fill:var(--marigold)}
+  .mk[aria-pressed="true"] .flag{display:none}
+  .mk[aria-pressed="true"] .flag-big{display:block}
+  .mk[aria-pressed="true"] .mk-name{fill:var(--marigold)}
+  .mk .hit{fill:transparent;stroke:none}
+  .mk:focus-visible .hit{stroke:#fff;stroke-width:2;stroke-dasharray:5 4}
+
+  /* Region panel */
+  .region{padding:0 var(--pad) 64px}
+  .chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 26px;scrollbar-width:thin}
+  .chip{flex:none;background:#fff;color:var(--ink);border:1.5px solid var(--line);border-radius:999px;padding:9px 15px;font-weight:600;font-size:.95rem;cursor:pointer;white-space:nowrap}
+  .chip:hover{border-color:var(--ink)}
+  .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .panel{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,5vw,80px);border-top:2px solid var(--ink);padding-top:30px;align-items:start}
+  .region-name{font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1;letter-spacing:-.03em;margin:0 0 10px;font-weight:800}
+  .peak-line{margin:0 0 16px;color:var(--muted);font:500 1.05rem var(--sans)}
+  .panel p.blurb{margin:0;max-width:52ch}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;margin:0 0 24px}
+  .facts .wide{grid-column:1/-1}
+  .facts dt{font:500 .9rem var(--sans);color:var(--muted)}
+  .facts dd{margin:2px 0 0;font:700 1.2rem/1.3 var(--sans)}
+  .panel-actions{display:flex;flex-wrap:wrap;gap:12px}
+  .btn.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+  .btn.dark:hover{background:var(--ink-2);border-color:var(--ink-2)}
+  .btn.outline{background:transparent;border-color:var(--ink);color:var(--ink)}
+  .btn.outline:hover{background:rgba(15,38,48,.08)}
+
+  /* Generic sections */
+  .block{padding:76px var(--pad)}
+  .sec-title{font-size:clamp(1.9rem,4vw,2.9rem);letter-spacing:-.03em;line-height:1.05;margin:0 0 14px;font-weight:800}
+  .lead{max-width:60ch;color:var(--muted);margin:0}
+  .flags{height:10px;background:repeating-linear-gradient(90deg,var(--flag-blue) 0 44px,#fff 44px 88px,var(--flag-red) 88px 132px,var(--flag-green) 132px 176px,var(--marigold) 176px 220px)}
+
+  /* Journeys */
+  .j-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px}
+  .j-status{font:500 1rem var(--sans);color:var(--muted);margin:0}
+  .linkish{background:none;border:0;padding:0;color:var(--glacier);font:700 1rem var(--sans);text-decoration:underline;cursor:pointer}
+  .journeys{list-style:none;margin:30px 0 0;padding:0;border-top:2px solid var(--ink)}
+  .journeys li{display:grid;grid-template-columns:minmax(0,2.4fr) 90px 150px 170px auto;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+  .journeys h3{margin:0;font-size:1.25rem;letter-spacing:-.015em}
+  .tag{display:inline-block;margin-left:10px;padding:1px 9px;border:1.5px solid var(--glacier);border-radius:999px;font:600 .78rem/1.5 var(--sans);color:var(--glacier);vertical-align:middle;letter-spacing:0}
+  .journeys .where{margin:2px 0 0;color:var(--muted);font:500 .95rem var(--sans)}
+  .journeys .meta{font:500 1rem var(--sans)}
+  .journeys .enq{font:700 1rem var(--sans);color:var(--glacier);white-space:nowrap}
+
+  /* Seasons */
+  .seasons{background:#fff}
+  .table-scroll{overflow-x:auto;margin-top:30px}
+  table.grid{border-collapse:collapse;width:100%;min-width:340px;font-family:var(--sans)}
+  .grid th,.grid td{padding:10px 2px;text-align:center;font-size:.9rem;font-weight:500}
+  .grid thead th{color:var(--muted);border-bottom:2px solid var(--ink)}
+  .grid tbody th{text-align:left;padding-right:14px;white-space:nowrap}
+  .grid tbody tr{border-bottom:1px solid var(--line)}
+  .grid tbody tr.on{background:rgba(242,182,50,.24)}
+  .grid .m-short{display:none}
+  .dot{display:inline-block;width:16px;height:16px;border-radius:50%;vertical-align:middle}
+  .dot.best{background:var(--glacier)}
+  .dot.ok{border:2px solid var(--glacier)}
+  .legend{display:flex;flex-wrap:wrap;gap:12px 28px;margin:22px 0 0;font:500 .95rem var(--sans);color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  /* Steps */
+  .steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin:36px 0 0;padding:0}
+  .steps li{counter-increment:s;border-top:5px solid var(--c);padding-top:16px}
+  .steps li::before{content:counter(s);display:block;font:800 2.4rem/1 var(--sans);letter-spacing:-.03em;margin-bottom:10px}
+  .steps h3{margin:0 0 6px;font-size:1.2rem}
+  .steps p{margin:0;color:var(--muted);font-size:1.02rem}
+
+  /* Contact */
+  .contact{background:var(--ink);color:#fff}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,6vw,88px);align-items:start}
+  .contact p.lead{color:#B9CDD4}
+  .reach{margin:26px 0 0;line-height:2.1}
+  .reach a{color:#fff;font:700 1.15rem var(--sans)}
+  .reach a:hover{color:var(--marigold)}
+  form.plan{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field.full{grid-column:1/-1}
+  .field label{font-weight:600;font-size:.95rem;color:#DCE9ED}
+  .field input,.field select,.field textarea{font-size:1rem;padding:12px 13px;border-radius:6px;border:2px solid transparent;background:#fff;color:var(--ink)}
+  .field textarea{min-height:110px;resize:vertical;font-family:var(--serif)}
+  form.plan .btn{justify-self:start}
+  .status{grid-column:1/-1;margin:0;font:500 1rem var(--sans);color:var(--marigold);min-height:1.5em}
+
+  footer{background:#0B1E26;color:#A9C0C8;font-family:var(--sans);font-size:.95rem}
+  .foot-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding:28px var(--pad)}
+  footer a{color:#DCE9ED}
+
+  @media (max-width:900px){
+    .panel,.contact-grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .journeys li{grid-template-columns:1fr 1fr;gap:6px 16px}
+    .journeys li>div:first-child{grid-column:1/-1}
+    .journeys .enq{justify-self:start}
+  }
+  @media (max-width:640px){
+    .site-head nav a:not(.btn){display:none}
+    .steps{grid-template-columns:1fr}
+    form.plan{grid-template-columns:1fr}
+    .grid .m-full{display:none}
+    .grid .m-short{display:inline}
+    .grid th,.grid td{font-size:.8rem}
+    .block{padding:56px var(--pad)}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero" id="top">
+  <header class="site-head">
+    <a class="logo" href="#top" aria-label="Tripzo home">
+      <svg width="30" height="24" viewBox="0 0 30 24" aria-hidden="true"><path d="M0 24 L11 4 L17 15 L21 9 L30 24Z" fill="#fff"/><path d="M11 4 L14 9.5 L11 8.2 L8 9.5Z" fill="#F2B632"/></svg>
+      Tripzo
+    </a>
+    <nav aria-label="Main">
+      <a href="#journeys">Journeys</a>
+      <a href="#seasons">When to go</a>
+      <a href="#how">How it works</a>
+      <a class="btn small" href="#plan">Plan my trip</a>
+    </nav>
+  </header>
+
+  <div class="hero-copy">
+    <h1>The whole Himalaya, from Kashmir to Arunachal.</h1>
+    <p>Tripzo plans treks, road journeys and summit climbs across India and Nepal. Pick a flag on the ridge to see where each region sits on the range and when to go.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#plan">Plan my trip</a>
+      <a class="btn ghost" href="#journeys">See journeys</a>
+    </div>
+  </div>
+
+  <div class="ridge-wrap" id="ridgeWrap">
+    <svg id="ridge" viewBox="0 0 1200 440" role="group" aria-label="The Himalaya from west to east, with eight regions marked by flags" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="snowGrad" gradientUnits="userSpaceOnUse" x1="0" y1="80" x2="0" y2="440">
+          <stop offset="0" stop-color="#FFFFFF"/>
+          <stop offset=".55" stop-color="#DCE8EC"/>
+          <stop offset="1" stop-color="#EEF3F5"/>
+        </linearGradient>
+      </defs>
+      <path id="ridgeBack" fill="#416F7D"/>
+      <path id="ridgeMid" fill="#7BA3AE"/>
+      <path id="ridgeFront" fill="url(#snowGrad)"/>
+      <g id="markers"></g>
+    </svg>
+  </div>
+</section>
+
+<section class="region" aria-live="polite">
+  <div class="chips" id="chips" role="group" aria-label="Choose a region, west to east"></div>
+  <div class="panel">
+    <div>
+      <h2 class="region-name" id="rName"></h2>
+      <p class="peak-line" id="rPeak"></p>
+      <p class="blurb" id="rBlurb"></p>
+    </div>
+    <div>
+      <dl class="facts">
+        <div><dt>Best months</dt><dd id="rBest"></dd></div>
+        <div><dt>Journeys</dt><dd id="rCount"></dd></div>
+        <div class="wide" id="rOffWrap" hidden><dt>Offbeat stops</dt><dd id="rOff"></dd></div>
+      </dl>
+      <div class="panel-actions">
+        <a class="btn dark" href="#journeys">See journeys</a>
+        <a class="btn outline" href="#plan">Plan a trip here</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="flags" aria-hidden="true"></div>
+
+<section class="block" id="journeys">
+  <div class="j-head">
+    <div>
+      <h2 class="sec-title">Journeys</h2>
+      <p class="lead">Treks, road circuits and summit climbs. Every route can be shortened, extended or built around your group.</p>
+    </div>
+    <p class="j-status"><span id="jStatus"></span> <button class="linkish" id="showAll" type="button" hidden>Show all regions</button></p>
+  </div>
+  <ul class="journeys" id="jList"></ul>
+</section>
+
+<section class="block seasons" id="seasons">
+  <h2 class="sec-title">When to go</h2>
+  <p class="lead">Monsoon, snowfall and open passes decide the season in each region. Select a region name to highlight it on the ridge.</p>
+  <div class="table-scroll">
+    <table class="grid" id="seasonTable"></table>
+  </div>
+  <p class="legend">
+    <span><i class="dot best"></i> Best months</span>
+    <span><i class="dot ok"></i> Possible, conditions vary</span>
+    <span>Blank: monsoon, heavy snow or closed passes</span>
+  </p>
+</section>
+
+<section class="block" id="how">
+  <h2 class="sec-title">How a Tripzo trip works</h2>
+  <ol class="steps">
+    <li style="--c:var(--flag-blue)"><h3>Tell us where and when</h3><p>Share the region, month, group size and how hard you want it to be.</p></li>
+    <li style="--c:var(--flag-red)"><h3>We build the route</h3><p>Day-by-day plan with acclimatisation, stays, transport and permits.</p></li>
+    <li style="--c:var(--flag-green)"><h3>Walk with local guides</h3><p>Guides and porters from the region lead the way on the mountain.</p></li>
+    <li style="--c:var(--marigold)"><h3>Stay supported</h3><p>One point of contact before, during and after the trip.</p></li>
+  </ol>
+</section>
+
+<section class="block contact" id="plan">
+  <div class="contact-grid">
+    <div>
+      <h2 class="sec-title">Plan my trip</h2>
+      <p class="lead">Tell us roughly what you have in mind. We reply with a route, dates and what to prepare.</p>
+      <p class="reach">
+        <a href="tel:+917439004627">+91 74390 04627</a><br>
+        <a href="https://wa.me/917439004627">Message on WhatsApp</a><br>
+        <a href="mailto:contact.tripzotravel@gmail.com">contact.tripzotravel@gmail.com</a>
+      </p>
+    </div>
+    <form class="plan" id="planForm" novalidate>
+      <div class="field"><label for="fName">Name</label><input id="fName" name="name" autocomplete="name" required></div>
+      <div class="field"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="fRegion">Region</label><select id="fRegion" name="region"></select></div>
+      <div class="field"><label for="fMonth">Month of travel</label><select id="fMonth" name="month"></select></div>
+      <div class="field"><label for="fGroup">Group size</label><input id="fGroup" name="group" type="number" min="1" max="50" value="2"></div>
+      <div class="field"><label for="fPhone">Phone or WhatsApp (optional)</label><input id="fPhone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="field full"><label for="fNotes">Anything else we should know</label><textarea id="fNotes" name="notes"></textarea></div>
+      <button class="btn" type="submit">Send enquiry</button>
+      <p class="status" id="formStatus" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="flags" aria-hidden="true"></div>
+  <div class="foot-in">
+    <span>Tripzo. Himalayan treks and journeys across India and Nepal.</span>
+    <span><a href="mailto:contact.tripzotravel@gmail.com">contact.tripzotravel@gmail.com</a> &nbsp; <a href="tel:+917439004627">+91 74390 04627</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CONTACT_EMAIL = "contact.tripzotravel@gmail.com";
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var FULL_MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // months: 2 = best, 1 = possible, 0 = not recommended
+  var REGIONS = [
+    {id:"kashmir",name:"Kashmir",country:"India",peak:"Kolahoi",elev:5425,x:90,best:"Jul to Sep",
+     blurb:"Alpine lakes and high meadows below Kolahoi, the tallest peak of the Kashmir Himalaya.",
+     months:[0,0,0,0,1,1,2,2,2,1,0,0]},
+    {id:"ladakh",name:"Ladakh",country:"India",peak:"Stok Kangri",elev:6153,x:230,best:"Jun to Sep",
+     blurb:"High-desert valleys, whitewashed monasteries and Stok Kangri, a popular first 6,000 m summit.",
+     months:[0,0,0,0,1,2,2,2,2,1,0,0]},
+    {id:"spiti",name:"Spiti",country:"India",peak:"Kunzum La",elev:4590,x:380,best:"Jun to Oct",
+     blurb:"A cold-desert valley of Buddhist monasteries, fossil-rich hills and passes above 4,500 m.",
+     months:[1,1,0,0,1,2,2,2,2,2,0,0]},
+    {id:"uttarakhand",name:"Uttarakhand",country:"India",peak:"Nanda Devi",elev:7816,x:530,best:"Apr to May, Sep to Oct",
+     blurb:"Garhwal and Kumaon: alpine meadows and pilgrim trails beneath Nanda Devi, India's second-highest peak.",
+     months:[1,1,1,2,2,1,1,1,2,2,1,1]},
+    {id:"annapurna",name:"Annapurna",country:"Nepal",peak:"Annapurna I",elev:8091,x:690,best:"Mar to May, Oct to Nov",
+     blurb:"Rhododendron forest, deep gorges and tea-house trails around the Annapurna massif.",
+     months:[0,1,2,2,2,0,0,0,1,2,2,1]},
+    {id:"darjeeling",name:"Darjeeling",country:"India",peak:"Sandakphu",label:"Sandakphu",elev:3636,y:350,x:840,best:"Mar to May, Oct to Nov",
+     offbeat:"Lepchajagat, Mirik, Lava, Lolegaon",
+     blurb:"Tea estates, the Singalila Ridge and quiet hill villages. Sandakphu is the highest point in West Bengal.",
+     months:[1,1,2,2,2,0,0,0,1,2,2,1]},
+    {id:"sikkim",name:"Sikkim",country:"India",peak:"Gurudongmar Lake",label:"Gurudongmar",elev:5430,x:980,best:"Mar to May, Oct to Nov",
+     offbeat:"Zuluk, Aritar, Rinchenpong, Hee Gaon",
+     blurb:"Monastery towns, alpine valleys, the Old Silk Route and Gurudongmar Lake, one of the highest lakes in the world.",
+     months:[0,1,2,2,2,0,0,0,1,2,2,1]},
+    {id:"arunachal",name:"Arunachal",country:"India",peak:"Kangto",elev:7060,x:1110,best:"Mar to Apr, Oct to Nov",
+     blurb:"India's far-east Himalaya: Tawang's monastery, Sela Pass and peaks like Kangto.",
+     months:[0,1,2,2,1,0,0,0,1,2,2,1]}
+  ];
+
+  // o: true marks an offbeat route
+  var JOURNEYS = [
+    {r:"kashmir",t:"Kashmir Great Lakes trek",d:7,g:"Moderate",s:"Jul to Sep"},
+    {r:"ladakh",t:"Markha Valley trek",d:8,g:"Moderate",s:"Jun to Sep"},
+    {r:"ladakh",t:"Stok Kangri summit climb",d:8,g:"Challenging",s:"Jul to Sep"},
+    {r:"spiti",t:"Spiti Valley road circuit",d:9,g:"Easy",s:"Jun to Oct"},
+    {r:"uttarakhand",t:"Valley of Flowers and Hemkund",d:6,g:"Easy to moderate",s:"Jul to Sep"},
+    {r:"uttarakhand",t:"Kedarkantha winter trek",d:6,g:"Easy to moderate",s:"Dec to Apr"},
+    {r:"annapurna",t:"Poon Hill sunrise trek",d:5,g:"Easy",s:"Mar to May, Oct to Nov"},
+    {r:"annapurna",t:"Annapurna Base Camp",d:9,g:"Moderate",s:"Mar to May, Oct to Nov"},
+    {r:"darjeeling",t:"Darjeeling classic: tea estates and Tiger Hill",d:4,g:"Easy",s:"Mar to May, Oct to Nov"},
+    {r:"darjeeling",t:"Sandakphu and Phalut trek",d:6,g:"Moderate",s:"Mar to May, Oct to Nov"},
+    {r:"darjeeling",t:"Lepchajagat and Mirik tea-estate stay",d:4,g:"Easy",s:"Mar to May, Sep to Nov",o:true},
+    {r:"darjeeling",t:"Lava, Lolegaon and the Kalimpong hills",d:6,g:"Easy",s:"Mar to May, Oct to Nov",o:true},
+    {r:"sikkim",t:"Gangtok, Pelling and Ravangla by road",d:7,g:"Easy",s:"Mar to May, Oct to Nov"},
+    {r:"sikkim",t:"Gurudongmar Lake and North Sikkim",d:7,g:"Moderate",s:"Mar to May, Oct to Nov"},
+    {r:"sikkim",t:"Dzongri trek from Yuksom",d:8,g:"Challenging",s:"Apr to May, Oct to Nov"},
+    {r:"sikkim",t:"Zuluk and the Old Silk Route",d:5,g:"Easy",s:"Mar to May, Oct to Nov",o:true},
+    {r:"sikkim",t:"Offbeat west Sikkim: Rinchenpong and Hee Gaon",d:6,g:"Easy",s:"Mar to May, Oct to Nov",o:true},
+    {r:"arunachal",t:"Tawang and Sela Pass",d:8,g:"Easy to moderate",s:"Mar to Apr, Oct to Nov"}
+  ];
+
+  var state = {selected:null};
+  var $ = function(id){return document.getElementById(id)};
+  var fmt = function(n){return n.toLocaleString("en-US")};
+  var byId = function(id){return REGIONS.filter(function(r){return r.id===id})[0]};
+
+  /* ---- Ridgeline ---- */
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  function yFor(e){return 390-(e-3500)/5349*300}
+  function yOf(r){return r.y||yFor(r.elev)}
+  function ridgePath(keys,seed,depth,jag){
+    var rnd=mulberry32(seed),pts=[keys[0]];
+    for(var i=1;i<keys.length;i++){
+      var a=keys[i-1],b=keys[i],n=5;
+      for(var j=1;j<n;j++){
+        var t=j/n,x=a[0]+(b[0]-a[0])*t;
+        var y=a[1]+(b[1]-a[1])*t+Math.pow(Math.sin(Math.PI*t),.8)*depth*(.5+rnd()*.5)+(rnd()-.5)*jag;
+        pts.push([x,y]);
+      }
+      pts.push(b);
+    }
+    return "M0 440 L"+pts.map(function(p){return p[0].toFixed(1)+" "+p[1].toFixed(1)}).join(" L")+" L1200 440 Z";
+  }
+  var frontKeys=[[0,330]].concat(REGIONS.map(function(r){return [r.x,yOf(r)]})).concat([[1200,300]]);
+  $("ridgeFront").setAttribute("d",ridgePath(frontKeys,7,34,14));
+  $("ridgeMid").setAttribute("d",ridgePath([[0,310],[60,250],[170,290],[300,205],[430,270],[600,195],[740,235],[900,160],[1040,205],[1160,175],[1200,230]],21,30,16));
+  $("ridgeBack").setAttribute("d",ridgePath([[0,262],[140,205],[330,242],[470,168],[640,214],[800,126],[930,172],[1070,116],[1200,192]],42,26,16));
+
+  $("markers").innerHTML = REGIONS.map(function(r){
+    var y=yOf(r).toFixed(1);
+    return '<g class="mk" data-id="'+r.id+'" tabindex="0" role="button" aria-pressed="false" aria-label="'+r.name+', '+r.country+', '+fmt(r.elev)+' metres" transform="translate('+r.x+' '+y+')">'+
+      '<rect class="hit" x="-52" y="-84" width="104" height="94" rx="8"/>'+
+      '<line x1="0" y1="0" x2="0" y2="-36" stroke="#fff" stroke-width="2"/>'+
+      '<path class="flag" d="M0 -36 L20 -30 L0 -24Z"/>'+
+      '<path class="flag-big" d="M0 -36 L34 -27 L0 -18Z"/>'+
+      '<text class="mk-name" text-anchor="middle" y="-62">'+(r.label||r.peak)+'</text>'+
+      '<text class="mk-elev" text-anchor="middle" y="-46">'+fmt(r.elev)+' m</text>'+
+    '</g>';
+  }).join("");
+
+  /* ---- Chips ---- */
+  $("chips").innerHTML = REGIONS.map(function(r){
+    return '<button class="chip" type="button" data-select="'+r.id+'" aria-pressed="false">'+r.name+'</button>';
+  }).join("");
+
+  /* ---- Season table ---- */
+  var head='<thead><tr><th scope="col" class="vh">Region</th>'+MONTHS.map(function(m,i){
+    return '<th scope="col" title="'+FULL_MONTHS[i]+'"><span class="m-full">'+m+'</span><span class="m-short">'+m.charAt(0)+'</span></th>';
+  }).join("")+'</tr></thead>';
+  var body='<tbody>'+REGIONS.map(function(r){
+    return '<tr data-row="'+r.id+'"><th scope="row"><button class="linkish" type="button" data-select="'+r.id+'">'+r.name+'</button></th>'+
+      r.months.map(function(v){
+        return '<td>'+(v===2?'<i class="dot best"></i><span class="vh">Best</span>':v===1?'<i class="dot ok"></i><span class="vh">Possible</span>':'')+'</td>';
+      }).join("")+'</tr>';
+  }).join("")+'</tbody>';
+  $("seasonTable").innerHTML=head+body;
+
+  /* ---- Form selects ---- */
+  $("fRegion").innerHTML='<option value="">Not sure yet</option>'+REGIONS.map(function(r){return '<option value="'+r.id+'">'+r.name+' ('+r.country+')</option>'}).join("");
+  $("fMonth").innerHTML='<option value="">Flexible</option>'+FULL_MONTHS.map(function(m){return '<option>'+m+'</option>'}).join("");
+
+  /* ---- Render ---- */
+  function renderJourneys(){
+    var list=JOURNEYS.filter(function(j){return !state.selected||j.r===state.selected});
+    $("jList").innerHTML=list.map(function(j){
+      var r=byId(j.r);
+      return '<li><div><h3>'+j.t+(j.o?'<span class="tag">Offbeat</span>':'')+'</h3><p class="where">'+r.name+', '+r.country+'</p></div>'+
+        '<span class="meta">'+j.d+' days</span><span class="meta">'+j.g+'</span><span class="meta">'+j.s+'</span>'+
+        '<a class="enq" href="#plan" data-enquire="'+j.r+'">Enquire</a></li>';
+    }).join("");
+    if(state.selected){
+      $("jStatus").textContent="Showing "+list.length+" in "+byId(state.selected).name+".";
+      $("showAll").hidden=false;
+    }else{
+      $("jStatus").textContent="Showing all "+list.length+" journeys.";
+      $("showAll").hidden=true;
+    }
+  }
+
+  function renderPanel(){
+    var r=state.selected?byId(state.selected):null;
+    if(r){
+      var n=JOURNEYS.filter(function(j){return j.r===r.id}).length;
+      $("rName").textContent=r.name;
+      $("rPeak").textContent=r.peak+", "+fmt(r.elev)+" m, "+r.country;
+      $("rBlurb").textContent=r.blurb;
+      $("rBest").textContent=r.best;
+      $("rCount").textContent=n+(n===1?" route":" routes");
+      $("rOffWrap").hidden=!r.offbeat;
+      if(r.offbeat) $("rOff").textContent=r.offbeat;
+    }else{
+      $("rName").textContent="The whole range";
+      $("rPeak").textContent="Eight regions, west to east";
+      $("rBlurb").textContent="Select a flag on the ridge, or a region above, to see its peak, season and journeys.";
+      $("rBest").textContent="Varies by region";
+      $("rCount").textContent=JOURNEYS.length+" routes";
+      $("rOffWrap").hidden=true;
+    }
+  }
+
+  function centerOn(id,smooth){
+    var r=byId(id),wrap=$("ridgeWrap"),w=$("ridge").getBoundingClientRect().width;
+    wrap.scrollTo({left:Math.max(0,r.x/1200*w-wrap.clientWidth/2),behavior:(smooth&&!reduce)?"smooth":"auto"});
+  }
+
+  function select(id,opts){
+    opts=opts||{};
+    state.selected=id;
+    Array.prototype.forEach.call(document.querySelectorAll(".mk"),function(el){el.setAttribute("aria-pressed",String(el.dataset.id===id))});
+    Array.prototype.forEach.call(document.querySelectorAll(".chip"),function(el){el.setAttribute("aria-pressed",String(el.dataset.select===id))});
+    Array.prototype.forEach.call(document.querySelectorAll("[data-row]"),function(el){el.classList.toggle("on",el.dataset.row===id)});
+    if(id){ $("fRegion").value=id; if(opts.center!==false) centerOn(id,opts.smooth); }
+    renderPanel();
+    renderJourneys();
+  }
+
+  /* ---- Events ---- */
+  $("markers").addEventListener("click",function(e){
+    var g=e.target.closest(".mk"); if(g) select(g.dataset.id,{smooth:true});
+  });
+  $("markers").addEventListener("keydown",function(e){
+    if(e.key==="Enter"||e.key===" "){var g=e.target.closest(".mk"); if(g){e.preventDefault();select(g.dataset.id,{smooth:true});}}
+  });
+  document.addEventListener("click",function(e){
+    var s=e.target.closest("[data-select]");
+    if(s){select(s.dataset.select,{smooth:true});return;}
+    var q=e.target.closest("[data-enquire]");
+    if(q){$("fRegion").value=q.dataset.enquire;}
+  });
+  $("showAll").addEventListener("click",function(){select(null)});
+
+  $("planForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var name=$("fName").value.trim(),email=$("fEmail").value.trim(),status=$("formStatus");
+    if(!name||!email||!/^(\S+)@(\S+)\.(\S+)$/.test(email)){
+      status.textContent="Enter your name and a valid email so we can reply.";
+      (!name?$("fName"):$("fEmail")).focus();
+      return;
+    }
+    var rid=$("fRegion").value,region=rid?byId(rid).name:"Not sure yet";
+    var body=["Name: "+name,"Email: "+email,"Phone: "+($("fPhone").value.trim()||"-"),"Region: "+region,
+      "Month: "+($("fMonth").value||"Flexible"),"Group size: "+$("fGroup").value,"","Notes:",$("fNotes").value.trim()].join("\n");
+    status.textContent="Opening your email app with the enquiry filled in. Press send there to reach us.";
+    window.location.href="mailto:"+CONTACT_EMAIL+"?subject="+encodeURIComponent("Trip enquiry: "+region)+"&body="+encodeURIComponent(body);
+  });
+
+  select("darjeeling",{smooth:false});
+})();
+</script>
+</body>
+</html>
