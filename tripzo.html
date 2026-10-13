@@ -3,509 +3,363 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tripzo | Himalayan treks and journeys across India and Nepal</title>
-<meta name="description" content="Tripzo plans treks, road journeys and summit climbs across the whole Himalaya, from Kashmir to Arunachal Pradesh and through Nepal.">
+<title>Tripzo | Darjeeling, Sikkim and Meghalaya, the quiet side</title>
+<meta name="description" content="Tripzo plans trips to Darjeeling and its offbeat villages, East, West and North Sikkim, and Meghalaya, plus Kashmir, Spiti and Hampta Pass.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&family=Noto+Serif+Tibetan:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#0F2630;
-    --ink-2:#1B3B47;
-    --snow:#EEF3F5;
-    --glacier:#1F7482;
-    --line:#C5D5DB;
-    --marigold:#F2B632;
-    --flag-blue:#2B5FA8;
-    --flag-red:#C8372D;
-    --flag-green:#2F8F5B;
-    --text:#16313B;
-    --muted:#4F6A74;
-    --pad:clamp(20px,5vw,64px);
-    --sans:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
-    --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  body{margin:0;background:var(--snow);color:var(--text);font-family:var(--serif);font-size:1.125rem;line-height:1.65}
-  h1,h2,h3,button,input,select,textarea,label,nav,.sans{font-family:var(--sans)}
-  a{color:var(--glacier)}
-  :focus-visible{outline:3px solid var(--marigold);outline-offset:3px}
+:root{--ink:#0a0a0a;--paper:#efede8;--red:#d7263d;--sun:#ff9a0a;--grn:#2e8b57;--blu:#1f6feb;--serif:"Outfit",system-ui,sans-serif;--sans:"Inter",system-ui,sans-serif;--tib:"Noto Serif Tibetan","Jomolhari",serif;--pad:clamp(20px,5vw,64px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.track{animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.05rem/1.6 var(--sans)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;line-height:1.1;margin:0}
+h2{font-size:clamp(2.1rem,5vw,3.7rem)}em{font-style:normal;color:var(--sun)}.hero em,.light em{color:#d46a00}a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.dark{background:var(--ink);color:#fff}.sec{padding:84px var(--pad)}
+.lead{max-width:58ch;opacity:.72;margin:14px 0 0}
+.btn{display:inline-block;padding:14px 22px;border:1.5px solid currentColor;background:none;color:inherit;font:600 .95rem var(--sans);text-decoration:none;cursor:pointer}
+.btn.solid{background:#fff;color:#000;border-color:#fff}.btn.ink{background:#000;color:#fff;border-color:#000}
+.ic{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+/* hero */
+.hero{position:relative;padding-top:8px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px var(--pad)}
+.logo{display:block}.logo img{display:block;height:36px;width:auto}
+.top nav{display:flex;align-items:center;gap:26px;font-size:.95rem}.top nav a{text-decoration:none;opacity:.8}.top nav a:hover{opacity:1}
+.top nav .btn{opacity:1;padding:10px 16px}
+.hero h1{font-size:clamp(2.4rem,6.4vw,5.2rem);max-width:16ch;padding:clamp(20px,3vw,36px) var(--pad) 0}
+.hero p{max-width:52ch;opacity:.78;padding:20px var(--pad) 0;margin:0}
+.hero .acts{display:flex;flex-wrap:wrap;gap:12px;padding:28px var(--pad) 0}
+.scene{display:block;width:100%;height:clamp(150px,22vw,270px);margin-top:28px}
+/* ribbon */
+.ribbon{background:#0a0a0a;color:#fff;overflow:hidden;white-space:nowrap}.ribbon:hover .track{animation-play-state:paused}.ribbon.alt{background:#fff;color:#000;border-block:2px solid #000}
+.track{display:inline-flex;animation:run 50s linear infinite}
+.track span{display:inline-flex;align-items:center;gap:22px;padding:14px 11px;font:700 1.35rem var(--tib)}
+.track b{font:600 1.05rem var(--sans);letter-spacing:.02em}
+.track i{width:12px;height:12px;border-radius:50%}
+@keyframes run{to{transform:translateX(-50%)}}
+/* map */
+.mapwrap{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(20px,4vw,56px);margin-top:36px;align-items:start}
+.map{width:100%;height:auto;background:#fff;border:1.5px solid var(--ink);display:block}
+.map text{font:600 15px var(--sans);paint-order:stroke;stroke:#fff;stroke-width:4px;fill:#000;pointer-events:none}
+.map .lbl{font-weight:500;font-size:13px;fill:#777}
+.map .pn{stroke:#9a9a9a}.map .gm{stroke:#000}
+.nd{cursor:pointer;outline:none}.nd .hit{fill:transparent}.nd .dot{fill:#fff;stroke:#000;stroke-width:2.5}
+.nd.on .dot,.nd:hover .dot{fill:var(--sun)}.nd:focus-visible .hit{stroke:#000;stroke-dasharray:4 3}
+.routes{display:flex;flex-direction:column;gap:8px;margin:0 0 22px}
+.routes button{display:flex;align-items:center;gap:12px;text-align:left;border:1.5px solid var(--ink);background:none;color:inherit;padding:12px 14px;font:600 .98rem var(--sans);cursor:pointer}
+.routes button i{width:26px;height:5px;background:var(--c,#000);flex:none}
+.routes button[aria-pressed=true]{background:var(--ink);color:#fff}
+.panel h3{font-size:2rem;margin-bottom:4px}.panel .meta{margin:0 0 10px;font-weight:600;font-size:.92rem;opacity:.7}
+.panel p{margin:0 0 16px}.guide{margin:20px 0 0;padding:14px 0 0;border-top:1px solid #0004;font-size:.92rem;line-height:1.7}
+.mini{display:flex;flex-wrap:wrap;gap:18px 36px;margin-top:40px;padding-top:24px;border-top:1.5px solid var(--ink)}
+.mini div{display:flex;align-items:center;gap:12px;font-size:.95rem}.mini svg{width:38px;height:38px;flex:none}
+/* season bar */
+.bar{display:inline-flex;gap:2px;vertical-align:middle}
+.bar i{display:block;width:10px;height:10px;border:1px solid currentColor;opacity:.22;font-style:normal}
+.bar i.c1{opacity:.6}.bar i.c2{background:currentColor;opacity:1}
+.bar.big i{width:clamp(18px,4.6vw,28px);height:28px;font:600 .72rem/26px var(--sans);text-align:center}
+.bar.big i.c2{color:var(--paper)}
+/* rows */
+.rows{margin-top:30px}.row{display:grid;grid-template-columns:1fr auto;gap:8px 28px;padding:20px 0;border-top:1px solid #8886}
+.row h3{font-size:1.55rem}.row p{margin:4px 0 0;opacity:.72;max-width:54ch;font-size:1rem}
+.when{text-align:right;font-size:.88rem;line-height:1.9}
+.tag{display:inline-block;margin-left:10px;padding:0 9px;border:1.5px solid var(--sun);color:var(--sun);font:600 .72rem/1.6 var(--sans);vertical-align:middle;letter-spacing:.04em}
+.light .tag{color:#b45309;border-color:#b45309}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.tab{border:1.5px solid #fff;background:none;color:#fff;padding:10px 18px;font:600 .95rem var(--sans);cursor:pointer}
+.tab[aria-selected=true]{background:#fff;color:#000}
+.note{font-size:.95rem;opacity:.7;margin:14px 0 0}
+/* food */
+.foods{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:24px;margin-top:36px}
+.food{border-top:1.5px solid var(--ink);padding-top:14px}.food svg{width:48px;height:48px}.food h3{font-size:1.3rem;margin:8px 0 4px}.food p{margin:0;font-size:.95rem;opacity:.75}
+/* form */
+.cgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,6vw,88px);align-items:start}
+.reach{margin:26px 0 0;line-height:2.1}.reach a{font:600 1.15rem var(--sans)}.reach a:hover{color:var(--sun)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f{display:flex;flex-direction:column;gap:5px}.f.w{grid-column:1/-1}
+.f label{font-size:.9rem;font-weight:500;opacity:.85}
+.f input,.f select,.f textarea{font:1rem var(--sans);padding:12px;border:1.5px solid #fff;background:#000;color:#fff;border-radius:0}
+.f textarea{min-height:100px;resize:vertical}
+form .btn{justify-self:start}.st{grid-column:1/-1;margin:0;color:var(--sun);min-height:1.5em}
+.flags{height:9px;background:repeating-linear-gradient(90deg,var(--blu) 0 44px,#fff 44px 88px,var(--red) 88px 132px,var(--grn) 132px 176px,var(--sun) 176px 220px)}
+footer{background:#000;color:#bbb;font-size:.92rem}.fi{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:26px var(--pad)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(max-width:860px){.mapwrap,.cgrid{grid-template-columns:1fr}.row{grid-template-columns:1fr}.when{text-align:left}}
+@media(max-width:640px){.top nav a:not(.btn){display:none}form{grid-template-columns:1fr}.sec{padding:60px var(--pad)}}
 
-  /* Hero */
-  .hero{position:relative;overflow:hidden;color:#fff;
-    background:
-      radial-gradient(55% 55% at 70% 64%,rgba(242,182,50,.34),transparent 70%),
-      linear-gradient(180deg,#0B1E26 0%,#1B3B47 52%,#2F5F6C 100%)}
-  .site-head{display:flex;align-items:center;justify-content:space-between;padding:20px var(--pad)}
-  .logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:800 1.7rem/1 var(--sans);letter-spacing:-.03em}
-  .site-head nav{display:flex;align-items:center;gap:28px}
-  .site-head nav a:not(.btn){color:#DCE9ED;text-decoration:none;font-weight:500;font-size:1rem}
-  .site-head nav a:not(.btn):hover{color:#fff;text-decoration:underline}
-  .btn{display:inline-block;background:var(--marigold);color:var(--ink);font:700 1rem/1 var(--sans);padding:15px 22px;border-radius:6px;text-decoration:none;border:2px solid var(--marigold);cursor:pointer}
-  .btn:hover{background:#FFC94D;border-color:#FFC94D}
-  .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.65)}
-  .btn.ghost:hover{background:rgba(255,255,255,.12)}
-  .btn.small{padding:11px 16px;font-size:.95rem}
-  .hero-copy{padding:clamp(28px,6vw,72px) var(--pad) 0;max-width:1040px}
-  h1{font-size:clamp(2.7rem,7.2vw,5.6rem);line-height:.98;letter-spacing:-.035em;font-weight:800;margin:0 0 22px}
-  .hero-copy p{max-width:54ch;color:#D5E4E9;font-size:1.2rem;margin:0 0 28px}
-  .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
-  .ridge-wrap{margin-top:16px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
-  .ridge-wrap::-webkit-scrollbar{display:none}
-  .ridge-wrap svg{display:block;width:100%;min-width:900px;height:auto}
-  .mk{cursor:pointer;outline:none}
-  .mk text{fill:#fff;font-family:var(--sans);pointer-events:none;paint-order:stroke;stroke:#0F2630;stroke-width:4px;stroke-linejoin:round}
-  .mk .mk-name{font-size:17px;font-weight:700}
-  .mk .mk-elev{font-size:14px;opacity:.78}
-  .mk .flag{fill:#fff;opacity:.9}
-  .mk .flag-big{display:none;fill:var(--marigold)}
-  .mk:hover .flag{fill:var(--marigold)}
-  .mk[aria-pressed="true"] .flag{display:none}
-  .mk[aria-pressed="true"] .flag-big{display:block}
-  .mk[aria-pressed="true"] .mk-name{fill:var(--marigold)}
-  .mk .hit{fill:transparent;stroke:none}
-  .mk:focus-visible .hit{stroke:#fff;stroke-width:2;stroke-dasharray:5 4}
-
-  /* Region panel */
-  .region{padding:0 var(--pad) 64px}
-  .chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 26px;scrollbar-width:thin}
-  .chip{flex:none;background:#fff;color:var(--ink);border:1.5px solid var(--line);border-radius:999px;padding:9px 15px;font-weight:600;font-size:.95rem;cursor:pointer;white-space:nowrap}
-  .chip:hover{border-color:var(--ink)}
-  .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .panel{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,5vw,80px);border-top:2px solid var(--ink);padding-top:30px;align-items:start}
-  .region-name{font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1;letter-spacing:-.03em;margin:0 0 10px;font-weight:800}
-  .peak-line{margin:0 0 16px;color:var(--muted);font:500 1.05rem var(--sans)}
-  .panel p.blurb{margin:0;max-width:52ch}
-  .facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;margin:0 0 24px}
-  .facts .wide{grid-column:1/-1}
-  .facts dt{font:500 .9rem var(--sans);color:var(--muted)}
-  .facts dd{margin:2px 0 0;font:700 1.2rem/1.3 var(--sans)}
-  .panel-actions{display:flex;flex-wrap:wrap;gap:12px}
-  .btn.dark{background:var(--ink);border-color:var(--ink);color:#fff}
-  .btn.dark:hover{background:var(--ink-2);border-color:var(--ink-2)}
-  .btn.outline{background:transparent;border-color:var(--ink);color:var(--ink)}
-  .btn.outline:hover{background:rgba(15,38,48,.08)}
-
-  /* Generic sections */
-  .block{padding:76px var(--pad)}
-  .sec-title{font-size:clamp(1.9rem,4vw,2.9rem);letter-spacing:-.03em;line-height:1.05;margin:0 0 14px;font-weight:800}
-  .lead{max-width:60ch;color:var(--muted);margin:0}
-  .flags{height:10px;background:repeating-linear-gradient(90deg,var(--flag-blue) 0 44px,#fff 44px 88px,var(--flag-red) 88px 132px,var(--flag-green) 132px 176px,var(--marigold) 176px 220px)}
-
-  /* Journeys */
-  .j-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px}
-  .j-status{font:500 1rem var(--sans);color:var(--muted);margin:0}
-  .linkish{background:none;border:0;padding:0;color:var(--glacier);font:700 1rem var(--sans);text-decoration:underline;cursor:pointer}
-  .journeys{list-style:none;margin:30px 0 0;padding:0;border-top:2px solid var(--ink)}
-  .journeys li{display:grid;grid-template-columns:minmax(0,2.4fr) 90px 150px 170px auto;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
-  .journeys h3{margin:0;font-size:1.25rem;letter-spacing:-.015em}
-  .tag{display:inline-block;margin-left:10px;padding:1px 9px;border:1.5px solid var(--glacier);border-radius:999px;font:600 .78rem/1.5 var(--sans);color:var(--glacier);vertical-align:middle;letter-spacing:0}
-  .journeys .where{margin:2px 0 0;color:var(--muted);font:500 .95rem var(--sans)}
-  .journeys .meta{font:500 1rem var(--sans)}
-  .journeys .enq{font:700 1rem var(--sans);color:var(--glacier);white-space:nowrap}
-
-  /* Seasons */
-  .seasons{background:#fff}
-  .table-scroll{overflow-x:auto;margin-top:30px}
-  table.grid{border-collapse:collapse;width:100%;min-width:340px;font-family:var(--sans)}
-  .grid th,.grid td{padding:10px 2px;text-align:center;font-size:.9rem;font-weight:500}
-  .grid thead th{color:var(--muted);border-bottom:2px solid var(--ink)}
-  .grid tbody th{text-align:left;padding-right:14px;white-space:nowrap}
-  .grid tbody tr{border-bottom:1px solid var(--line)}
-  .grid tbody tr.on{background:rgba(242,182,50,.24)}
-  .grid .m-short{display:none}
-  .dot{display:inline-block;width:16px;height:16px;border-radius:50%;vertical-align:middle}
-  .dot.best{background:var(--glacier)}
-  .dot.ok{border:2px solid var(--glacier)}
-  .legend{display:flex;flex-wrap:wrap;gap:12px 28px;margin:22px 0 0;font:500 .95rem var(--sans);color:var(--muted)}
-  .legend span{display:inline-flex;align-items:center;gap:8px}
-  .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
-  /* Steps */
-  .steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin:36px 0 0;padding:0}
-  .steps li{counter-increment:s;border-top:5px solid var(--c);padding-top:16px}
-  .steps li::before{content:counter(s);display:block;font:800 2.4rem/1 var(--sans);letter-spacing:-.03em;margin-bottom:10px}
-  .steps h3{margin:0 0 6px;font-size:1.2rem}
-  .steps p{margin:0;color:var(--muted);font-size:1.02rem}
-
-  /* Contact */
-  .contact{background:var(--ink);color:#fff}
-  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,6vw,88px);align-items:start}
-  .contact p.lead{color:#B9CDD4}
-  .reach{margin:26px 0 0;line-height:2.1}
-  .reach a{color:#fff;font:700 1.15rem var(--sans)}
-  .reach a:hover{color:var(--marigold)}
-  form.plan{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .field{display:flex;flex-direction:column;gap:6px}
-  .field.full{grid-column:1/-1}
-  .field label{font-weight:600;font-size:.95rem;color:#DCE9ED}
-  .field input,.field select,.field textarea{font-size:1rem;padding:12px 13px;border-radius:6px;border:2px solid transparent;background:#fff;color:var(--ink)}
-  .field textarea{min-height:110px;resize:vertical;font-family:var(--serif)}
-  form.plan .btn{justify-self:start}
-  .status{grid-column:1/-1;margin:0;font:500 1rem var(--sans);color:var(--marigold);min-height:1.5em}
-
-  footer{background:#0B1E26;color:#A9C0C8;font-family:var(--sans);font-size:.95rem}
-  .foot-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding:28px var(--pad)}
-  footer a{color:#DCE9ED}
-
-  @media (max-width:900px){
-    .panel,.contact-grid{grid-template-columns:1fr}
-    .steps{grid-template-columns:1fr 1fr}
-    .journeys li{grid-template-columns:1fr 1fr;gap:6px 16px}
-    .journeys li>div:first-child{grid-column:1/-1}
-    .journeys .enq{justify-self:start}
-  }
-  @media (max-width:640px){
-    .site-head nav a:not(.btn){display:none}
-    .steps{grid-template-columns:1fr}
-    form.plan{grid-template-columns:1fr}
-    .grid .m-full{display:none}
-    .grid .m-short{display:inline}
-    .grid th,.grid td{font-size:.8rem}
-    .block{padding:56px var(--pad)}
-  }
+.brand{position:relative;padding:clamp(16px,3vw,36px) var(--pad) 0}
+.brand::before{content:"";position:absolute;left:var(--pad);top:30%;width:clamp(240px,44vw,520px);aspect-ratio:2/1;transform:translate(-10%,-20%);background:radial-gradient(closest-side,rgba(255,154,10,.28),transparent);pointer-events:none}
+.brand .lg{position:relative;display:block;width:clamp(210px,34vw,380px);height:auto;transition:transform .4s}
+.brand:hover .lg{transform:rotate(-2deg) scale(1.03)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chip{border:1.5px solid var(--ink);background:none;color:inherit;padding:9px 14px;font:600 .92rem var(--sans);cursor:pointer;transition:background .2s}
+.chip:hover{background:#8883}.chip[aria-pressed=true]{background:var(--ink);color:#fff}
+.dark .chip{border-color:#fff}.dark .chip[aria-pressed=true]{background:#fff;color:#000}
+.wgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;margin-top:34px;min-height:90px}
+.wcol h3{font-size:1.1rem;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--sun)}
+.wcol ul{list-style:none;margin:0;padding:0}.wcol li{padding:5px 0}.wcol a{text-decoration:none}.wcol a:hover{text-decoration:underline}
+.sec.light+.sec.light{border-top:1px solid #0002}
+.map.skmap{background:transparent;border:0;max-height:80vh}
+.skmap .out{fill:#151515;stroke:#fff;stroke-width:1.5}
+.skmap text{stroke:#0a0a0a;fill:#fff}.skmap .lbl{fill:#999;stroke:none}
+.skmap .dot{fill:#fff;stroke:#0a0a0a;stroke-width:2}.skmap .ob .dot{fill:var(--sun)}
+.skmap .nd.on .dot{stroke:#fff;stroke-width:3.5}.skmap .nd.on text{fill:var(--sun)}
+.skmap .nd:hover .dot{stroke:#fff;stroke-width:3}.skmap .nd:focus-visible .hit{stroke:#fff}
+.nd{transition:opacity .25s}.nd.dim{opacity:.15}
+.pl{fill:none;stroke:var(--sun);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:pl 2.4s ease-out infinite}
+@keyframes pl{from{transform:scale(1);opacity:.9}to{transform:scale(2.6);opacity:0}}
+.dark .bar.big i.c2{color:#000}
+.food{transition:transform .25s}.food:hover{transform:translateY(-4px)}.food:hover svg{color:var(--sun)}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.pl{animation:none}.brand .lg,.food{transition:none}}
 </style>
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="pine" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M12 2 8 8h2.5L7 13h3l-4 6h5v3h2v-3h5l-4-6h3l-3.5-5H16z"/></symbol>
+  <symbol id="gompa" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M3 21h18M5 21V11h14v10M3 11h18M7 11V8h10v3M12 8V3M10 21v-5h4v5"/></symbol>
+  <symbol id="momo" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M3 17c0-5 4-9 9-9s9 4 9 9zM8 10l1 7M12 9v8M16 10l-1 7"/></symbol>
+  <symbol id="bowl" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M3 11h18c0 5-4 8-9 8s-9-3-9-8zM8 8c0-2 2-2 0-4M12 8c0-2 2-2 0-4M16 8c0-2 2-2 0-4"/></symbol>
+  <symbol id="cup" viewBox="0 0 24 24"><path vector-effect="non-scaling-stroke" d="M4 10h13v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 11h2a2 2 0 0 1 0 4h-2M8 7c0-2 2-1 0-4M12 7c0-2 2-1 0-4"/></symbol>
+  <symbol id="ring" viewBox="0 0 24 24"><circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="8"/><circle vector-effect="non-scaling-stroke" cx="12" cy="12" r="3.5"/></symbol>
+</svg>
+
 <section class="hero" id="top">
-  <header class="site-head">
-    <a class="logo" href="#top" aria-label="Tripzo home">
-      <svg width="30" height="24" viewBox="0 0 30 24" aria-hidden="true"><path d="M0 24 L11 4 L17 15 L21 9 L30 24Z" fill="#fff"/><path d="M11 4 L14 9.5 L11 8.2 L8 9.5Z" fill="#F2B632"/></svg>
-      Tripzo
-    </a>
-    <nav aria-label="Main">
-      <a href="#journeys">Journeys</a>
-      <a href="#seasons">When to go</a>
-      <a href="#how">How it works</a>
-      <a class="btn small" href="#plan">Plan my trip</a>
-    </nav>
+  <header class="top">
+    <a class="logo" href="#top" aria-label="Tripzo home"><img class="lg" alt="Tripzo" width="152" height="48"></a>
+    <nav aria-label="Main"><a href="#darjeeling">Darjeeling</a><a href="#sikkim">Sikkim</a><a href="#meghalaya">Meghalaya</a><a href="#when">Best time</a><a href="#eat">Eat</a><a class="btn ink" href="#plan">Plan my trip</a></nav>
   </header>
-
-  <div class="hero-copy">
-    <h1>The whole Himalaya, from Kashmir to Arunachal.</h1>
-    <p>Tripzo plans treks, road journeys and summit climbs across India and Nepal. Pick a flag on the ridge to see where each region sits on the range and when to go.</p>
-    <div class="hero-actions">
-      <a class="btn" href="#plan">Plan my trip</a>
-      <a class="btn ghost" href="#journeys">See journeys</a>
-    </div>
-  </div>
-
-  <div class="ridge-wrap" id="ridgeWrap">
-    <svg id="ridge" viewBox="0 0 1200 440" role="group" aria-label="The Himalaya from west to east, with eight regions marked by flags" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="snowGrad" gradientUnits="userSpaceOnUse" x1="0" y1="80" x2="0" y2="440">
-          <stop offset="0" stop-color="#FFFFFF"/>
-          <stop offset=".55" stop-color="#DCE8EC"/>
-          <stop offset="1" stop-color="#EEF3F5"/>
-        </linearGradient>
-      </defs>
-      <path id="ridgeBack" fill="#416F7D"/>
-      <path id="ridgeMid" fill="#7BA3AE"/>
-      <path id="ridgeFront" fill="url(#snowGrad)"/>
-      <g id="markers"></g>
-    </svg>
-  </div>
+  <div class="brand"><img class="lg" alt="Tripzo, travel across the eastern Himalaya" width="380" height="119"></div>
+  <h1>Darjeeling, Sikkim, Meghalaya and the <em>quiet places</em> between.</h1>
+  <p>Tripzo plans private and small-group trips to the monasteries, tea estates and hill villages most visitors miss.</p>
+  <div class="acts"><a class="btn ink" href="#darjeeling">Explore the Darjeeling map</a><a class="btn" href="#plan">Plan my trip</a></div>
+  <svg class="scene ic" id="scene" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Line drawing of pine trees, a monastery and prayer flags in the hills">
+    <path d="M0 215 120 150 200 190 330 95 450 180 560 125 700 200 840 105 980 190 1100 140 1200 200" stroke="#000" opacity=".3"/>
+  </svg>
 </section>
 
-<section class="region" aria-live="polite">
-  <div class="chips" id="chips" role="group" aria-label="Choose a region, west to east"></div>
-  <div class="panel">
+<div class="ribbon" aria-label="Om Mani Padme Hum"><div class="track" id="rib1"></div></div>
+
+<section class="sec light" id="when">
+  <h2>Where is best in <em id="wm"></em>?</h2>
+  <p class="lead">Pick your month and see where the weather works.</p>
+  <div class="chips" id="mchips" role="group" aria-label="Month of travel"></div>
+  <div class="wgrid" id="wres" aria-live="polite"></div>
+</section>
+
+<section class="sec light" id="darjeeling">
+  <h2>Darjeeling <em>and its offbeats</em></h2>
+  <p class="lead">Tap a route or a place on the map to see where it sits and when to go. The map is a simple guide and is not to scale.</p>
+  <div class="mapwrap">
+    <svg class="map" id="map" viewBox="0 0 800 600" role="group" aria-label="Schematic map of the Darjeeling hills"></svg>
     <div>
-      <h2 class="region-name" id="rName"></h2>
-      <p class="peak-line" id="rPeak"></p>
-      <p class="blurb" id="rBlurb"></p>
+      <div class="routes" id="routes" role="group" aria-label="Routes"></div>
+      <div class="panel" id="panel" aria-live="polite"></div>
+      <p class="guide"><b>Mar to May:</b> clear skies and spring bloom. <b>Oct to Nov:</b> crisp air and the best views. <b>Dec to Feb:</b> cold, with snow on the Singalila Ridge. <b>Jun to Aug:</b> monsoon, with landslide risk on the roads.</p>
     </div>
-    <div>
-      <dl class="facts">
-        <div><dt>Best months</dt><dd id="rBest"></dd></div>
-        <div><dt>Journeys</dt><dd id="rCount"></dd></div>
-        <div class="wide" id="rOffWrap" hidden><dt>Offbeat stops</dt><dd id="rOff"></dd></div>
-      </dl>
-      <div class="panel-actions">
-        <a class="btn dark" href="#journeys">See journeys</a>
-        <a class="btn outline" href="#plan">Plan a trip here</a>
-      </div>
-    </div>
+  </div>
+  <div class="mini">
+    <div><svg class="ic" viewBox="0 0 24 24"><use href="#gompa"/></svg>Ghoom (Yiga Choeling) Monastery</div>
+    <div><svg class="ic" viewBox="0 0 24 24"><use href="#gompa"/></svg>Bhutia Busty Monastery</div>
+    <div><svg class="ic" viewBox="0 0 24 24"><use href="#gompa"/></svg>Japanese Peace Pagoda</div>
+    <div><svg class="ic" viewBox="0 0 24 24"><use href="#pine"/></svg>Pine forest at Lepchajagat</div>
   </div>
 </section>
 
-<div class="flags" aria-hidden="true"></div>
-
-<section class="block" id="journeys">
-  <div class="j-head">
-    <div>
-      <h2 class="sec-title">Journeys</h2>
-      <p class="lead">Treks, road circuits and summit climbs. Every route can be shortened, extended or built around your group.</p>
-    </div>
-    <p class="j-status"><span id="jStatus"></span> <button class="linkish" id="showAll" type="button" hidden>Show all regions</button></p>
+<section class="sec dark" id="sikkim">
+  <h2>Sikkim <em>east, west and north</em></h2>
+  <p class="lead">Old Silk Route villages in the east, monastery country in the west and alpine lakes in the north. Some areas need permits, and we arrange them.</p>
+  <div class="chips" id="skchips" role="group" aria-label="Filter Sikkim places"></div>
+  <div class="mapwrap">
+    <svg class="map skmap" id="skmap" viewBox="0 0 680 720" role="group" aria-label="Schematic map of Sikkim, not to scale"></svg>
+    <div class="panel" id="skpanel" aria-live="polite"></div>
   </div>
-  <ul class="journeys" id="jList"></ul>
+  <div class="rows" id="sk"></div>
 </section>
 
-<section class="block seasons" id="seasons">
-  <h2 class="sec-title">When to go</h2>
-  <p class="lead">Monsoon, snowfall and open passes decide the season in each region. Select a region name to highlight it on the ridge.</p>
-  <div class="table-scroll">
-    <table class="grid" id="seasonTable"></table>
-  </div>
-  <p class="legend">
-    <span><i class="dot best"></i> Best months</span>
-    <span><i class="dot ok"></i> Possible, conditions vary</span>
-    <span>Blank: monsoon, heavy snow or closed passes</span>
-  </p>
+<section class="sec light" id="meghalaya">
+  <h2>Meghalaya <em>and its offbeats</em></h2>
+  <p class="lead">Root bridges, clear rivers and Khasi villages. Oct to May is the clearest season. Jun to Sep brings full waterfalls and heavy rain.</p>
+  <div class="rows" id="mg"></div>
 </section>
 
-<section class="block" id="how">
-  <h2 class="sec-title">How a Tripzo trip works</h2>
-  <ol class="steps">
-    <li style="--c:var(--flag-blue)"><h3>Tell us where and when</h3><p>Share the region, month, group size and how hard you want it to be.</p></li>
-    <li style="--c:var(--flag-red)"><h3>We build the route</h3><p>Day-by-day plan with acclimatisation, stays, transport and permits.</p></li>
-    <li style="--c:var(--flag-green)"><h3>Walk with local guides</h3><p>Guides and porters from the region lead the way on the mountain.</p></li>
-    <li style="--c:var(--marigold)"><h3>Stay supported</h3><p>One point of contact before, during and after the trip.</p></li>
-  </ol>
+<section class="sec dark" id="more">
+  <h2>Also from <em>Tripzo</em></h2>
+  <div class="rows" id="more-rows"></div>
 </section>
 
-<section class="block contact" id="plan">
-  <div class="contact-grid">
+<section class="sec light" id="eat">
+  <h2>What you will <em>eat</em></h2>
+  <div class="foods" id="foods"></div>
+</section>
+
+<div class="ribbon alt" aria-hidden="true"><div class="track" id="rib2"></div></div>
+
+<section class="sec dark" id="plan">
+  <div class="cgrid">
     <div>
-      <h2 class="sec-title">Plan my trip</h2>
-      <p class="lead">Tell us roughly what you have in mind. We reply with a route, dates and what to prepare.</p>
-      <p class="reach">
-        <a href="tel:+917439004627">+91 74390 04627</a><br>
-        <a href="https://wa.me/917439004627">Message on WhatsApp</a><br>
-        <a href="mailto:contact.tripzotravel@gmail.com">contact.tripzotravel@gmail.com</a>
-      </p>
+      <h2>Plan my <em>trip</em></h2>
+      <p class="lead">Tell us where, when and how many. We reply with a route, dates and what to pack.</p>
+      <p class="reach"><a href="tel:+917439004627">+91 74390 04627</a><br><a href="https://wa.me/917439004627">Message on WhatsApp</a><br><a href="mailto:contact.tripzotravel@gmail.com">contact.tripzotravel@gmail.com</a></p>
     </div>
-    <form class="plan" id="planForm" novalidate>
-      <div class="field"><label for="fName">Name</label><input id="fName" name="name" autocomplete="name" required></div>
-      <div class="field"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" autocomplete="email" required></div>
-      <div class="field"><label for="fRegion">Region</label><select id="fRegion" name="region"></select></div>
-      <div class="field"><label for="fMonth">Month of travel</label><select id="fMonth" name="month"></select></div>
-      <div class="field"><label for="fGroup">Group size</label><input id="fGroup" name="group" type="number" min="1" max="50" value="2"></div>
-      <div class="field"><label for="fPhone">Phone or WhatsApp (optional)</label><input id="fPhone" name="phone" type="tel" autocomplete="tel"></div>
-      <div class="field full"><label for="fNotes">Anything else we should know</label><textarea id="fNotes" name="notes"></textarea></div>
-      <button class="btn" type="submit">Send enquiry</button>
-      <p class="status" id="formStatus" role="status"></p>
+    <form id="form" novalidate>
+      <div class="f"><label for="n">Name</label><input id="n" autocomplete="name"></div>
+      <div class="f"><label for="e">Email</label><input id="e" type="email" autocomplete="email"></div>
+      <div class="f"><label for="d">Destination</label><select id="d"></select></div>
+      <div class="f"><label for="m">Month</label><select id="m"></select></div>
+      <div class="f"><label for="g">Travellers</label><input id="g" type="number" min="1" max="50" value="2"></div>
+      <div class="f"><label for="p">Phone or WhatsApp</label><input id="p" type="tel" autocomplete="tel"></div>
+      <div class="f w"><label for="x">Anything else</label><textarea id="x"></textarea></div>
+      <button class="btn solid" type="submit">Send enquiry</button>
+      <p class="st" id="st" role="status"></p>
     </form>
   </div>
 </section>
 
-<footer>
-  <div class="flags" aria-hidden="true"></div>
-  <div class="foot-in">
-    <span>Tripzo. Himalayan treks and journeys across India and Nepal.</span>
-    <span><a href="mailto:contact.tripzotravel@gmail.com">contact.tripzotravel@gmail.com</a> &nbsp; <a href="tel:+917439004627">+91 74390 04627</a></span>
-  </div>
-</footer>
+<footer><div class="flags" aria-hidden="true"></div><div class="fi"><span>Tripzo. Darjeeling, Sikkim, Meghalaya and the Himalaya.</span><span><a href="mailto:contact.tripzotravel@gmail.com">contact.tripzotravel@gmail.com</a> &nbsp; <a href="tel:+917439004627">+91 74390 04627</a></span></div></footer>
 
 <script>
 (function(){
-  var CONTACT_EMAIL = "contact.tripzotravel@gmail.com";
-  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  var FULL_MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var $=function(s){return document.querySelector(s)};
+var LOGO="data:image/png;base64,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";Array.prototype.forEach.call(document.querySelectorAll(".lg"),function(i){i.src=LOGO});
+var MO="Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" "),FL=["#1f6feb","#fff","#d7263d","#2e8b57","#f4a300"];
+function bar(s,big){return '<span class="bar'+(big?' big':'')+'" aria-hidden="true">'+s.split("").map(function(c,i){return '<i class="c'+c+'">'+(big?MO[i][0]:'')+'</i>'}).join("")+'</span>'}
+function best(s){var r=[],i=0,j;while(i<12){if(s[i]=="2"){j=i;while(j<11&&s[j+1]=="2")j++;r.push(i==j?MO[i]:MO[i]+" to "+MO[j]);i=j+1}else i++}return r.length?"Best: "+r.join(", "):"Varies by year"}
+var B="112220001221",S="112220000221";
+var io="IntersectionObserver" in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.1}):null;
+function rv(root){if(!io)return;Array.prototype.forEach.call(root.querySelectorAll(".row,.food,.wcol,h2,.lead,.mapwrap"),function(e){if(!e.classList.contains("rv")){e.classList.add("rv");io.observe(e)}})}
 
-  // months: 2 = best, 1 = possible, 0 = not recommended
-  var REGIONS = [
-    {id:"kashmir",name:"Kashmir",country:"India",peak:"Kolahoi",elev:5425,x:90,best:"Jul to Sep",
-     blurb:"Alpine lakes and high meadows below Kolahoi, the tallest peak of the Kashmir Himalaya.",
-     months:[0,0,0,0,1,1,2,2,2,1,0,0]},
-    {id:"ladakh",name:"Ladakh",country:"India",peak:"Stok Kangri",elev:6153,x:230,best:"Jun to Sep",
-     blurb:"High-desert valleys, whitewashed monasteries and Stok Kangri, a popular first 6,000 m summit.",
-     months:[0,0,0,0,1,2,2,2,2,1,0,0]},
-    {id:"spiti",name:"Spiti",country:"India",peak:"Kunzum La",elev:4590,x:380,best:"Jun to Oct",
-     blurb:"A cold-desert valley of Buddhist monasteries, fossil-rich hills and passes above 4,500 m.",
-     months:[1,1,0,0,1,2,2,2,2,2,0,0]},
-    {id:"uttarakhand",name:"Uttarakhand",country:"India",peak:"Nanda Devi",elev:7816,x:530,best:"Apr to May, Sep to Oct",
-     blurb:"Garhwal and Kumaon: alpine meadows and pilgrim trails beneath Nanda Devi, India's second-highest peak.",
-     months:[1,1,1,2,2,1,1,1,2,2,1,1]},
-    {id:"annapurna",name:"Annapurna",country:"Nepal",peak:"Annapurna I",elev:8091,x:690,best:"Mar to May, Oct to Nov",
-     blurb:"Rhododendron forest, deep gorges and tea-house trails around the Annapurna massif.",
-     months:[0,1,2,2,2,0,0,0,1,2,2,1]},
-    {id:"darjeeling",name:"Darjeeling",country:"India",peak:"Sandakphu",label:"Sandakphu",elev:3636,y:350,x:840,best:"Mar to May, Oct to Nov",
-     offbeat:"Lepchajagat, Mirik, Lava, Lolegaon",
-     blurb:"Tea estates, the Singalila Ridge and quiet hill villages. Sandakphu is the highest point in West Bengal.",
-     months:[1,1,2,2,2,0,0,0,1,2,2,1]},
-    {id:"sikkim",name:"Sikkim",country:"India",peak:"Gurudongmar Lake",label:"Gurudongmar",elev:5430,x:980,best:"Mar to May, Oct to Nov",
-     offbeat:"Zuluk, Aritar, Rinchenpong, Hee Gaon",
-     blurb:"Monastery towns, alpine valleys, the Old Silk Route and Gurudongmar Lake, one of the highest lakes in the world.",
-     months:[0,1,2,2,2,0,0,0,1,2,2,1]},
-    {id:"arunachal",name:"Arunachal",country:"India",peak:"Kangto",elev:7060,x:1110,best:"Mar to Apr, Oct to Nov",
-     blurb:"India's far-east Himalaya: Tawang's monastery, Sela Pass and peaks like Kangto.",
-     months:[0,1,2,2,1,0,0,0,1,2,2,1]}
-  ];
+/* mantra ribbons */
+function ribbon(el){var u='<span>ཨོཾ་མ་ཎི་པདྨེ་ཧཱུྃ། <b>Om Mani Padme Hum</b>',h='';for(var i=0;i<10;i++)h+=u+'<i style="background:'+FL[i%5]+(FL[i%5]=="#fff"?';border:2px solid #000':'')+'"></i></span>';el.innerHTML=h+h}
+ribbon($("#rib1"));ribbon($("#rib2"));
 
-  // o: true marks an offbeat route
-  var JOURNEYS = [
-    {r:"kashmir",t:"Kashmir Great Lakes trek",d:7,g:"Moderate",s:"Jul to Sep"},
-    {r:"ladakh",t:"Markha Valley trek",d:8,g:"Moderate",s:"Jun to Sep"},
-    {r:"ladakh",t:"Stok Kangri summit climb",d:8,g:"Challenging",s:"Jul to Sep"},
-    {r:"spiti",t:"Spiti Valley road circuit",d:9,g:"Easy",s:"Jun to Oct"},
-    {r:"uttarakhand",t:"Valley of Flowers and Hemkund",d:6,g:"Easy to moderate",s:"Jul to Sep"},
-    {r:"uttarakhand",t:"Kedarkantha winter trek",d:6,g:"Easy to moderate",s:"Dec to Apr"},
-    {r:"annapurna",t:"Poon Hill sunrise trek",d:5,g:"Easy",s:"Mar to May, Oct to Nov"},
-    {r:"annapurna",t:"Annapurna Base Camp",d:9,g:"Moderate",s:"Mar to May, Oct to Nov"},
-    {r:"darjeeling",t:"Darjeeling classic: tea estates and Tiger Hill",d:4,g:"Easy",s:"Mar to May, Oct to Nov"},
-    {r:"darjeeling",t:"Sandakphu and Phalut trek",d:6,g:"Moderate",s:"Mar to May, Oct to Nov"},
-    {r:"darjeeling",t:"Lepchajagat and Mirik tea-estate stay",d:4,g:"Easy",s:"Mar to May, Sep to Nov",o:true},
-    {r:"darjeeling",t:"Lava, Lolegaon and the Kalimpong hills",d:6,g:"Easy",s:"Mar to May, Oct to Nov",o:true},
-    {r:"sikkim",t:"Gangtok, Pelling and Ravangla by road",d:7,g:"Easy",s:"Mar to May, Oct to Nov"},
-    {r:"sikkim",t:"Gurudongmar Lake and North Sikkim",d:7,g:"Moderate",s:"Mar to May, Oct to Nov"},
-    {r:"sikkim",t:"Dzongri trek from Yuksom",d:8,g:"Challenging",s:"Apr to May, Oct to Nov"},
-    {r:"sikkim",t:"Zuluk and the Old Silk Route",d:5,g:"Easy",s:"Mar to May, Oct to Nov",o:true},
-    {r:"sikkim",t:"Offbeat west Sikkim: Rinchenpong and Hee Gaon",d:6,g:"Easy",s:"Mar to May, Oct to Nov",o:true},
-    {r:"arunachal",t:"Tawang and Sela Pass",d:8,g:"Easy to moderate",s:"Mar to Apr, Oct to Nov"}
-  ];
+/* hero scene */
+(function(){var sc=$("#scene"),h='';
+[[30,185,55],[78,200,42],[125,180,60],[178,205,36],[470,200,42],[700,195,48],[955,190,50],[1005,180,62],[1058,200,42],[1105,188,52],[1152,205,36]].forEach(function(p){h+='<use href="#pine" class="pn" x="'+p[0]+'" y="'+p[1]+'" width="'+p[2]+'" height="'+p[2]+'"/>'});
+h+='<use href="#gompa" x="560" y="128" width="125" height="125"/>';
+function fl(x0,y0,cx,cy,x1,y1){h+='<path d="M'+x0+' '+y0+'Q'+cx+' '+cy+' '+x1+' '+y1+'" stroke="#000" opacity=".45"/>';for(var i=1;i<10;i++){var t=i/10,x=(1-t)*(1-t)*x0+2*t*(1-t)*cx+t*t*x1,y=(1-t)*(1-t)*y0+2*t*(1-t)*cy+t*t*y1;h+='<path d="M'+(x-6)+' '+y+'h12l-6 16z" fill="'+FL[i%5]+'" stroke="#000" stroke-width=".8"/>'}}
+fl(150,182,380,240,622,132);fl(622,132,820,238,1030,178);
+sc.insertAdjacentHTML("beforeend",h)})();
 
-  var state = {selected:null};
-  var $ = function(id){return document.getElementById(id)};
-  var fmt = function(n){return n.toLocaleString("en-US")};
-  var byId = function(id){return REGIONS.filter(function(r){return r.id===id})[0]};
+/* Darjeeling map */
+var N={
+sil:[480,545,"Siliguri and NJP","Your arrival point, with trains to NJP and flights to Bagdogra.",B],
+kur:[350,410,"Kurseong","Tea estates and pine forest on the road up. A calm first stop.",B],
+mir:[225,395,"Mirik","Sumendu Lake, tea gardens and orange orchards. Quieter than Darjeeling.",B],
+dar:[335,255,"Darjeeling","Toy train, Ghoom and Bhutia Busty monasteries, Tiger Hill sunrise and tea.",B,1],
+lep:[250,215,"Lepchajagat","Misty pine-forest hamlet near Ghoom, with homestays and quiet trails. Offbeat.",B],
+man:[180,175,"Manebhanjan","Trailhead for the Singalila Ridge, with Land Rover rides up the ridge.",S],
+ton:[130,130,"Tonglu","Ridge viewpoint and rest stop on the Sandakphu route.",S],
+san:[85,95,"Sandakphu","At 3,636 m, the highest point in West Bengal. Snow is possible in winter.",S],
+pha:[125,40,"Phalut","Remote far end of the ridge walk, near the Sikkim border.",S],
+tak:[410,300,"Takdah","Quiet cinchona and tea country between Darjeeling and Kalimpong. Offbeat.",B],
+kal:[560,245,"Kalimpong","Hill town of monasteries, plant nurseries and old cottages.",B,1],
+ris:[600,150,"Rishop","Forested village with bird-rich woods. Offbeat.",B],
+lol:[665,105,"Lolegaon","Hilltop village known for sunrise and cloud views. Offbeat.",B],
+lav:[705,175,"Lava","Misty forest village and gateway to Neora Valley National Park. Offbeat.",B]};
+var R=[
+{id:"classic",n:"Classic Darjeeling",st:["sil","kur","dar"],d:"Tea estates, toy-train country, monasteries and a Tiger Hill sunrise.",t:"4 days, easy",s:B,c:"#d7263d"},
+{id:"sandak",n:"Sandakphu and Phalut",st:["man","ton","san","pha"],d:"A walk along the Singalila Ridge, best in April and May for rhododendrons.",t:"6 days, moderate",s:S,c:"#f4a300"},
+{id:"mirik",n:"Mirik and Lepchajagat",st:["sil","mir","lep","dar"],d:"Lakes, tea gardens and pine forest on the lesser-used road.",t:"4 days, easy",s:B,c:"#2e8b57"},
+{id:"kalim",n:"Kalimpong, Lava and Lolegaon",st:["dar","tak","kal","lav","lol","ris"],d:"Offbeat villages east of the Teesta, away from the crowds.",t:"6 days, easy",s:B,c:"#1f6feb"}];
+var ALL={n:"All of Darjeeling",d:"Choose a route above, or tap a place on the map.",t:"",s:B};
+var map=$("#map"),h='<path d="M470 0C440 120 520 200 470 300S420 420 480 520" fill="none" stroke="#1f6feb" stroke-width="3" opacity=".4"/><text class="lbl" x="482" y="70" style="fill:#1f6feb">Teesta river</text><text class="lbl" x="10" y="22">Nepal</text><text class="lbl" x="690" y="30">Sikkim</text>';
+[[40,300],[90,335],[55,385],[150,305],[190,430],[285,470],[420,475],[630,365],[720,300],[745,430],[560,425],[760,70],[300,45],[420,200],[210,300]].forEach(function(p){h+='<use href="#pine" class="pn ic" x="'+p[0]+'" y="'+p[1]+'" width="28" height="28"/>'});
+R.forEach(function(r){h+='<polyline id="r_'+r.id+'" points="'+r.st.map(function(k){return N[k][0]+","+N[k][1]}).join(" ")+'" fill="none" stroke="'+r.c+'" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'});
+Object.keys(N).forEach(function(k){var a=N[k];h+='<g class="nd" data-k="'+k+'" tabindex="0" role="button" aria-label="'+a[2]+'"><circle class="hit" cx="'+a[0]+'" cy="'+a[1]+'" r="24"/><circle class="dot" cx="'+a[0]+'" cy="'+a[1]+'" r="7"/>'+(a[5]?'<use href="#gompa" class="gm ic" x="'+(a[0]-12)+'" y="'+(a[1]-38)+'" width="24" height="24"/>':'')+'<text x="'+(a[0]+13)+'" y="'+(a[1]+5)+'">'+a[2]+'</text></g>'});
+map.innerHTML=h;
+$("#routes").innerHTML='<button type="button" data-k="all" aria-pressed="true"><i></i>All routes</button>'+R.map(function(r){return '<button type="button" data-k="'+r.id+'" aria-pressed="false" style="--c:'+r.c+'"><i></i>'+r.n+'</button>'}).join("");
+function show(k){
+  var r=R.filter(function(x){return x.id==k})[0],it=r?{n:r.n,d:r.d,t:r.t+". "+r.st.map(function(s){return N[s][2]}).join(", then "),s:r.s}:N[k]?{n:N[k][2],d:N[k][3],t:"",s:N[k][4]}:ALL;
+  $("#panel").innerHTML='<h3>'+it.n+'</h3>'+(it.t?'<p class="meta">'+it.t+'</p>':'')+'<p>'+it.d+'</p>'+bar(it.s,1)+'<p class="meta" style="margin-top:10px">'+best(it.s)+'</p>';
+  R.forEach(function(x){var e=$("#r_"+x.id);e.style.opacity=(!r||r.id==x.id)?1:.12;e.style.strokeWidth=(r&&r.id==x.id)?5:3});
+  Array.prototype.forEach.call(document.querySelectorAll("#routes button"),function(b){b.setAttribute("aria-pressed",String(b.dataset.k==(r?k:"all")))});
+  Array.prototype.forEach.call(document.querySelectorAll(".nd"),function(g){g.classList.toggle("on",g.dataset.k==k)});
+}
+$("#routes").addEventListener("click",function(e){var b=e.target.closest("button");if(b)show(b.dataset.k)});
+map.addEventListener("click",function(e){var g=e.target.closest(".nd");if(g)show(g.dataset.k)});
+map.addEventListener("keydown",function(e){if(e.key=="Enter"||e.key==" "){var g=e.target.closest(".nd");if(g){e.preventDefault();show(g.dataset.k)}}});
+show("all");
 
-  /* ---- Ridgeline ---- */
-  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
-  function yFor(e){return 390-(e-3500)/5349*300}
-  function yOf(r){return r.y||yFor(r.elev)}
-  function ridgePath(keys,seed,depth,jag){
-    var rnd=mulberry32(seed),pts=[keys[0]];
-    for(var i=1;i<keys.length;i++){
-      var a=keys[i-1],b=keys[i],n=5;
-      for(var j=1;j<n;j++){
-        var t=j/n,x=a[0]+(b[0]-a[0])*t;
-        var y=a[1]+(b[1]-a[1])*t+Math.pow(Math.sin(Math.PI*t),.8)*depth*(.5+rnd()*.5)+(rnd()-.5)*jag;
-        pts.push([x,y]);
-      }
-      pts.push(b);
-    }
-    return "M0 440 L"+pts.map(function(p){return p[0].toFixed(1)+" "+p[1].toFixed(1)}).join(" L")+" L1200 440 Z";
-  }
-  var frontKeys=[[0,330]].concat(REGIONS.map(function(r){return [r.x,yOf(r)]})).concat([[1200,300]]);
-  $("ridgeFront").setAttribute("d",ridgePath(frontKeys,7,34,14));
-  $("ridgeMid").setAttribute("d",ridgePath([[0,310],[60,250],[170,290],[300,205],[430,270],[600,195],[740,235],[900,160],[1040,205],[1160,175],[1200,230]],21,30,16));
-  $("ridgeBack").setAttribute("d",ridgePath([[0,262],[140,205],[330,242],[470,168],[640,214],[800,126],[930,172],[1070,116],[1200,192]],42,26,16));
+/* lists: [name, note, months, offbeat] */
+function rows(el,l){el.innerHTML=l.map(function(x){return '<div class="row"><div><h3>'+x[0]+(x[3]?'<span class="tag">OFFBEAT</span>':'')+'</h3><p>'+x[1]+'</p></div><div class="when">'+bar(x[2])+'<br>'+best(x[2])+'</div></div>'}).join("");rv(el)}
+var SKP=[
+["Gangtok","Sikkim's capital: MG Marg, Enchey Monastery and cafe streets.","112220001222",0,"East",88.61,27.33,"r"],
+["Tsomgo Lake and Nathu La","High lake and border pass. Rhododendrons bloom in April and May.","001222001220",0,"East",88.77,27.38,"r","Tsomgo Lake"],
+["Zuluk","Zigzag roads on the old Silk Route, with snow in winter.","112220001222",1,"East",88.8,27.25,"r"],
+["Aritar","Lakeside village on the Sikkim and Bengal edge, calm and green.","112220001222",1,"East",88.66,27.2,"r"],
+["Pelling","Pemayangtse Monastery and the ruins of Rabdentse.","112220001222",0,"West",88.23,27.3,"l"],
+["Yuksom","Sikkim's first capital, with Dubdi Monastery and forest trails.","112220001222",0,"West",88.22,27.37,"l"],
+["Tashiding and Khecheopalri","A sacred lake and one of Sikkim's holiest monasteries.","112220001222",0,"West",88.3,27.33,"r","Tashiding"],
+["Rinchenpong","Forest village with a small monastery and slow walks.","112220001222",1,"West",88.24,27.24,"l"],
+["Hee Gaon","Tiny hill village with cardamom farms and homestays.","112220001222",1,"West",88.31,27.2,"r"],
+["Dzongri trek","High ridge trek from Yuksom for experienced walkers.","001222000220",0,"West",88.14,27.47,"l"],
+["Phodong Monastery","Quiet monastery on the road north from Gangtok.","112220001222",1,"North",88.58,27.41,"r","Phodong"],
+["Lachung and Yumthang Valley","River valley with rhododendron forest, hot springs and Zero Point.","001221000110",0,"North",88.72,27.75,"r","Lachung"],
+["Lachen","Gateway village to the high north, set above a river valley.","001221001220",0,"North",88.55,27.72,"l"],
+["Thangu and Chopta Valley","High pasture valleys with few visitors.","001221001220",1,"North",88.55,27.93,"l","Thangu"],
+["Gurudongmar Lake","One of the highest lakes in the world, at 5,430 m.","001221001220",0,"North",88.71,28.02,"r","Gurudongmar"]];
+function P(a,b){return[(a-87.95)*640,(28.18-b)*640]}
+var OUT=[[88.15,27.13],[88.05,27.25],[88,27.45],[88.02,27.65],[88.05,27.85],[88.15,28],[88.3,28.1],[88.5,28.12],[88.7,28.08],[88.85,27.98],[88.92,27.85],[88.88,27.7],[88.9,27.5],[88.85,27.38],[88.78,27.3],[88.8,27.2],[88.7,27.14],[88.55,27.14],[88.45,27.1],[88.3,27.09]].map(function(p){var q=P(p[0],p[1]);return q[0].toFixed(0)+","+q[1].toFixed(0)}).join(" ");
+var skm=$("#skmap"),sh='<polygon class="out" points="'+OUT+'" stroke-linejoin="round"/><text class="lbl" x="290" y="18">Tibet</text><text class="lbl" x="0" y="330">Nepal</text><text class="lbl" x="624" y="440">Bhutan</text>';
+SKP.forEach(function(p,i){var q=P(p[5],p[6]),l=p[7]=="l";sh+='<g class="nd'+(p[3]?' ob':'')+'" data-i="'+i+'" tabindex="0" role="button" aria-label="'+p[0]+', '+p[4]+' Sikkim"><circle class="hit" cx="'+q[0]+'" cy="'+q[1]+'" r="22"/>'+(p[3]?'<circle class="pl" cx="'+q[0]+'" cy="'+q[1]+'" r="7"/>':'')+'<circle class="dot" cx="'+q[0]+'" cy="'+q[1]+'" r="7"/><text x="'+(q[0]+(l?-13:13))+'" y="'+(q[1]+5)+'"'+(l?' text-anchor="end"':'')+'>'+(p[8]||p[0])+'</text></g>'});
+skm.innerHTML=sh;
+var skK="All";
+function skmatch(p,k){return k=="All"||p[4]==k||(k=="Offbeat only"&&p[3])}
+function skhome(){$("#skpanel").innerHTML='<h3>Sikkim</h3><p class="meta">'+SKP.length+' places, '+SKP.filter(function(p){return p[3]}).length+' offbeat</p><p>Tap a dot on the map, or filter by area. Pulsing orange dots are the offbeat places.</p>'}
+function skshow(i){var p=SKP[i];$("#skpanel").innerHTML='<h3>'+p[0]+'</h3><p class="meta">'+p[4]+' Sikkim'+(p[3]?', offbeat':'')+'</p><p>'+p[1]+'</p>'+bar(p[2],1)+'<p class="meta" style="margin-top:10px">'+best(p[2])+'</p>';
+  Array.prototype.forEach.call(skm.querySelectorAll(".nd"),function(g){g.classList.toggle("on",+g.dataset.i==i)})}
+function skf(k){skK=k;
+  Array.prototype.forEach.call(document.querySelectorAll("#skchips .chip"),function(b){b.setAttribute("aria-pressed",String(b.dataset.k==k))});
+  Array.prototype.forEach.call(skm.querySelectorAll(".nd"),function(g){g.classList.toggle("dim",!skmatch(SKP[+g.dataset.i],k));g.classList.remove("on")});
+  skhome();rows($("#sk"),SKP.filter(function(p){return skmatch(p,k)}).map(function(p){return p.slice(0,4)}))}
+$("#skchips").innerHTML=["All","East","West","North","Offbeat only"].map(function(k,i){return '<button class="chip" type="button" data-k="'+k+'" aria-pressed="'+(i==0)+'">'+k+'</button>'}).join("");
+$("#skchips").addEventListener("click",function(e){var b=e.target.closest(".chip");if(b)skf(b.dataset.k)});
+skm.addEventListener("click",function(e){var g=e.target.closest(".nd");if(g)skshow(+g.dataset.i)});
+skm.addEventListener("keydown",function(e){if(e.key=="Enter"||e.key==" "){var g=e.target.closest(".nd");if(g){e.preventDefault();skshow(+g.dataset.i)}}});
+skf("All");
+var MG=[
+["Shillong","Hill capital with lakes, cafes and the Khasi markets.","112221001222"],
+["Cherrapunji and Mawsynram","Waterfalls, caves and cloud-covered plateaus.","112211111222"],
+["Dawki and Umngot River","Boats on very clear water. Best from November to April.","222210000122"],
+["Mawlynnong","A tidy Khasi village with bamboo skywalks and homestays.","112221001222"],
+["Nongriat","Double-decker living root bridge, reached by a long stone stairway.","222110000122",1],
+["Kongthong","The whistling village, where each person has a tune.","222110000122",1],
+["Mawphlang Sacred Forest","Old Khasi grove with mossy trails and a guide.","112221001222",1],
+["Laitlum Canyons","Cliff-edge grass hills above deep gorges.","222110000122",1]];rows($("#mg"),MG);
+var MORE=[
+["Kashmir","Srinagar, Gulmarg and Pahalgam, with the Great Lakes trek in summer.","110222222200"],
+["Spiti","Cold-desert valley with Key and Kibber, and the road to Chandratal.","110012222200"],
+["Hampta Pass","Manali to Chandratal crossing in about five days, moderate.","000012212100"]];rows($("#more-rows"),MORE);
+var F=[["Momos","momo","Steamed dumplings with a fiery chutney."],["Thukpa","bowl","Hot noodle soup for cold hill evenings."],["Darjeeling tea","cup","Best tasted at the estate, fresh from the first flush in spring."],["Sel roti","ring","Crisp ring-shaped rice bread, a festival favourite."],["Phagshapa","bowl","Sikkimese pork with radish and dried chillies."],["Jadoh","bowl","Khasi rice cooked with pork or chicken."]];
+$("#foods").innerHTML=F.map(function(f){return '<div class="food"><svg class="ic" viewBox="0 0 24 24"><use href="#'+f[1]+'"/></svg><h3>'+f[0]+'</h3><p>'+f[2]+'</p></div>'}).join("");
 
-  $("markers").innerHTML = REGIONS.map(function(r){
-    var y=yOf(r).toFixed(1);
-    return '<g class="mk" data-id="'+r.id+'" tabindex="0" role="button" aria-pressed="false" aria-label="'+r.name+', '+r.country+', '+fmt(r.elev)+' metres" transform="translate('+r.x+' '+y+')">'+
-      '<rect class="hit" x="-52" y="-84" width="104" height="94" rx="8"/>'+
-      '<line x1="0" y1="0" x2="0" y2="-36" stroke="#fff" stroke-width="2"/>'+
-      '<path class="flag" d="M0 -36 L20 -30 L0 -24Z"/>'+
-      '<path class="flag-big" d="M0 -36 L34 -27 L0 -18Z"/>'+
-      '<text class="mk-name" text-anchor="middle" y="-62">'+(r.label||r.peak)+'</text>'+
-      '<text class="mk-elev" text-anchor="middle" y="-46">'+fmt(r.elev)+' m</text>'+
-    '</g>';
-  }).join("");
-
-  /* ---- Chips ---- */
-  $("chips").innerHTML = REGIONS.map(function(r){
-    return '<button class="chip" type="button" data-select="'+r.id+'" aria-pressed="false">'+r.name+'</button>';
-  }).join("");
-
-  /* ---- Season table ---- */
-  var head='<thead><tr><th scope="col" class="vh">Region</th>'+MONTHS.map(function(m,i){
-    return '<th scope="col" title="'+FULL_MONTHS[i]+'"><span class="m-full">'+m+'</span><span class="m-short">'+m.charAt(0)+'</span></th>';
-  }).join("")+'</tr></thead>';
-  var body='<tbody>'+REGIONS.map(function(r){
-    return '<tr data-row="'+r.id+'"><th scope="row"><button class="linkish" type="button" data-select="'+r.id+'">'+r.name+'</button></th>'+
-      r.months.map(function(v){
-        return '<td>'+(v===2?'<i class="dot best"></i><span class="vh">Best</span>':v===1?'<i class="dot ok"></i><span class="vh">Possible</span>':'')+'</td>';
-      }).join("")+'</tr>';
-  }).join("")+'</tbody>';
-  $("seasonTable").innerHTML=head+body;
-
-  /* ---- Form selects ---- */
-  $("fRegion").innerHTML='<option value="">Not sure yet</option>'+REGIONS.map(function(r){return '<option value="'+r.id+'">'+r.name+' ('+r.country+')</option>'}).join("");
-  $("fMonth").innerHTML='<option value="">Flexible</option>'+FULL_MONTHS.map(function(m){return '<option>'+m+'</option>'}).join("");
-
-  /* ---- Render ---- */
-  function renderJourneys(){
-    var list=JOURNEYS.filter(function(j){return !state.selected||j.r===state.selected});
-    $("jList").innerHTML=list.map(function(j){
-      var r=byId(j.r);
-      return '<li><div><h3>'+j.t+(j.o?'<span class="tag">Offbeat</span>':'')+'</h3><p class="where">'+r.name+', '+r.country+'</p></div>'+
-        '<span class="meta">'+j.d+' days</span><span class="meta">'+j.g+'</span><span class="meta">'+j.s+'</span>'+
-        '<a class="enq" href="#plan" data-enquire="'+j.r+'">Enquire</a></li>';
-    }).join("");
-    if(state.selected){
-      $("jStatus").textContent="Showing "+list.length+" in "+byId(state.selected).name+".";
-      $("showAll").hidden=false;
-    }else{
-      $("jStatus").textContent="Showing all "+list.length+" journeys.";
-      $("showAll").hidden=true;
-    }
-  }
-
-  function renderPanel(){
-    var r=state.selected?byId(state.selected):null;
-    if(r){
-      var n=JOURNEYS.filter(function(j){return j.r===r.id}).length;
-      $("rName").textContent=r.name;
-      $("rPeak").textContent=r.peak+", "+fmt(r.elev)+" m, "+r.country;
-      $("rBlurb").textContent=r.blurb;
-      $("rBest").textContent=r.best;
-      $("rCount").textContent=n+(n===1?" route":" routes");
-      $("rOffWrap").hidden=!r.offbeat;
-      if(r.offbeat) $("rOff").textContent=r.offbeat;
-    }else{
-      $("rName").textContent="The whole range";
-      $("rPeak").textContent="Eight regions, west to east";
-      $("rBlurb").textContent="Select a flag on the ridge, or a region above, to see its peak, season and journeys.";
-      $("rBest").textContent="Varies by region";
-      $("rCount").textContent=JOURNEYS.length+" routes";
-      $("rOffWrap").hidden=true;
-    }
-  }
-
-  function centerOn(id,smooth){
-    var r=byId(id),wrap=$("ridgeWrap"),w=$("ridge").getBoundingClientRect().width;
-    wrap.scrollTo({left:Math.max(0,r.x/1200*w-wrap.clientWidth/2),behavior:(smooth&&!reduce)?"smooth":"auto"});
-  }
-
-  function select(id,opts){
-    opts=opts||{};
-    state.selected=id;
-    Array.prototype.forEach.call(document.querySelectorAll(".mk"),function(el){el.setAttribute("aria-pressed",String(el.dataset.id===id))});
-    Array.prototype.forEach.call(document.querySelectorAll(".chip"),function(el){el.setAttribute("aria-pressed",String(el.dataset.select===id))});
-    Array.prototype.forEach.call(document.querySelectorAll("[data-row]"),function(el){el.classList.toggle("on",el.dataset.row===id)});
-    if(id){ $("fRegion").value=id; if(opts.center!==false) centerOn(id,opts.smooth); }
-    renderPanel();
-    renderJourneys();
-  }
-
-  /* ---- Events ---- */
-  $("markers").addEventListener("click",function(e){
-    var g=e.target.closest(".mk"); if(g) select(g.dataset.id,{smooth:true});
-  });
-  $("markers").addEventListener("keydown",function(e){
-    if(e.key==="Enter"||e.key===" "){var g=e.target.closest(".mk"); if(g){e.preventDefault();select(g.dataset.id,{smooth:true});}}
-  });
-  document.addEventListener("click",function(e){
-    var s=e.target.closest("[data-select]");
-    if(s){select(s.dataset.select,{smooth:true});return;}
-    var q=e.target.closest("[data-enquire]");
-    if(q){$("fRegion").value=q.dataset.enquire;}
-  });
-  $("showAll").addEventListener("click",function(){select(null)});
-
-  $("planForm").addEventListener("submit",function(e){
-    e.preventDefault();
-    var name=$("fName").value.trim(),email=$("fEmail").value.trim(),status=$("formStatus");
-    if(!name||!email||!/^(\S+)@(\S+)\.(\S+)$/.test(email)){
-      status.textContent="Enter your name and a valid email so we can reply.";
-      (!name?$("fName"):$("fEmail")).focus();
-      return;
-    }
-    var rid=$("fRegion").value,region=rid?byId(rid).name:"Not sure yet";
-    var body=["Name: "+name,"Email: "+email,"Phone: "+($("fPhone").value.trim()||"-"),"Region: "+region,
-      "Month: "+($("fMonth").value||"Flexible"),"Group size: "+$("fGroup").value,"","Notes:",$("fNotes").value.trim()].join("\n");
-    status.textContent="Opening your email app with the enquiry filled in. Press send there to reach us.";
-    window.location.href="mailto:"+CONTACT_EMAIL+"?subject="+encodeURIComponent("Trip enquiry: "+region)+"&body="+encodeURIComponent(body);
-  });
-
-  select("darjeeling",{smooth:false});
+/* best time */
+var ALLP=[];["dar","mir","lep","san","tak","kal","lol","lav"].forEach(function(k){ALLP.push([N[k][2],"Darjeeling and offbeats","#darjeeling",N[k][4]])});
+SKP.forEach(function(p){ALLP.push([p[8]||p[0],p[4]+" Sikkim","#sikkim",p[2]])});
+MG.forEach(function(p){ALLP.push([p[0],"Meghalaya","#meghalaya",p[2]])});
+MORE.forEach(function(p){ALLP.push([p[0],"Kashmir, Spiti, Hampta Pass","#more",p[2]])});
+var GR=["Darjeeling and offbeats","East Sikkim","West Sikkim","North Sikkim","Meghalaya","Kashmir, Spiti, Hampta Pass"],FMN="January February March April May June July August September October November December".split(" ");
+$("#mchips").innerHTML=MO.map(function(m,i){return '<button class="chip" type="button" data-i="'+i+'" aria-pressed="false">'+m+'</button>'}).join("");
+function when(i){$("#wm").textContent=FMN[i];
+  Array.prototype.forEach.call(document.querySelectorAll("#mchips .chip"),function(b){b.setAttribute("aria-pressed",String(+b.dataset.i==i))});
+  var h=GR.map(function(g){var l=ALLP.filter(function(x){return x[1]==g&&x[3][i]=="2"});return l.length?'<div class="wcol"><h3>'+g+'</h3><ul>'+l.map(function(x){return '<li><a href="'+x[2]+'">'+x[0]+'</a></li>'}).join("")+'</ul></div>':''}).join("");
+  $("#wres").innerHTML=h||'<p>Nothing is at its best this month. Try the months either side.</p>';rv($("#wres"))}
+$("#mchips").addEventListener("click",function(e){var b=e.target.closest(".chip");if(b)when(+b.dataset.i)});
+when(new Date().getMonth());
+/* form */
+var D=["Not sure yet","Darjeeling and offbeats","East Sikkim","West Sikkim","North Sikkim","Meghalaya","Kashmir","Spiti","Hampta Pass"],FM="January February March April May June July August September October November December".split(" ");
+$("#d").innerHTML=D.map(function(x){return '<option>'+x+'</option>'}).join("");
+$("#m").innerHTML='<option>Flexible</option>'+FM.map(function(x){return '<option>'+x+'</option>'}).join("");
+$("#form").addEventListener("submit",function(e){e.preventDefault();
+  var n=$("#n").value.trim(),m=$("#e").value.trim(),s=$("#st");
+  if(!n||!/^\S+@\S+\.\S+$/.test(m)){s.textContent="Enter your name and a valid email so we can reply.";return}
+  var b=["Name: "+n,"Email: "+m,"Phone: "+($("#p").value.trim()||"-"),"Destination: "+$("#d").value,"Month: "+$("#m").value,"Travellers: "+$("#g").value,"","Notes:",$("#x").value.trim()].join("\n");
+  s.textContent="Opening your email app with the enquiry filled in. Press send there to reach us.";
+  location.href="mailto:contact.tripzotravel@gmail.com?subject="+encodeURIComponent("Trip enquiry: "+$("#d").value)+"&body="+encodeURIComponent(b)});
+rv(document);
 })();
 </script>
 </body>
